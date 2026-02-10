@@ -1,6 +1,6 @@
 export const siteConfig = {
-  name: "MiStartup",
-  logo: "/logo.png",
+  name: "Corocito Financial Services",
+  logo: "/logo.svg",
   email: "hello@mistartup.com",
   phone: "+1 555 123 456",
   socialLinks: {
@@ -9,8 +9,9 @@ export const siteConfig = {
     github: "https://github.com/mistartup",
   },
   navigation: [
-    { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
-    { title: "Contact", href: "/contact" },
+    { title: "Nosotros", href: "/" },
+    { title: "Servicios", href: "/#" },
+    { title: "Seguridad", href: "/#" },
+    { title: "Capacidad", href: "/#" },
   ],
 }
