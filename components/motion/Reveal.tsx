@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, type Variant } from "framer-motion"
+import { motion, type Transition, type Variant } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 type RevealVariant =
@@ -53,14 +53,14 @@ const variants: Record<RevealVariant, MotionVariant> = {
   },
 }
 
-const transitions: Record<RevealVariant, { duration: number; ease: number[] }> = {
-  hero: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-  "fade-up": { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
-  "slide-left": { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-  "slide-right": { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
-  lift: { duration: 1, ease: [0.22, 1, 0.36, 1] },
-  zoom: { duration: 0.85, ease: [0.22, 1, 0.36, 1] },
-  blur: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+const transitions: Record<RevealVariant, Transition> = {
+  hero: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+  "fade-up": { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
+  "slide-left": { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+  "slide-right": { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
+  lift: { duration: 1, ease: [0.22, 1, 0.36, 1] as const },
+  zoom: { duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
+  blur: { duration: 1, ease: [0.22, 1, 0.36, 1] as const },
 }
 
 export function Reveal({
