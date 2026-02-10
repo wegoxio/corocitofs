@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, type Variant } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 type RevealVariant =
@@ -20,7 +20,9 @@ type RevealProps = {
   once?: boolean
 }
 
-const variants: Record<RevealVariant, { hidden: object; show: object }> = {
+type MotionVariant = { hidden: Variant; show: Variant }
+
+const variants: Record<RevealVariant, MotionVariant> = {
   hero: {
     hidden: { opacity: 0, y: 24, scale: 0.98 },
     show: { opacity: 1, y: 0, scale: 1 },
