@@ -1,6 +1,7 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useRef, useState } from "react"
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion"
 import { Section } from "@/components/layout/Section"
 import { Reveal } from "@/components/motion/Reveal"
 
@@ -14,6 +15,12 @@ const tabs: Array<{ key: TabKey; label: string }> = [
 
 export function AboutTabs() {
   const [active, setActive] = useState<TabKey>("about")
+  const textRef = useRef<HTMLParagraphElement | null>(null)
+  const { scrollYProgress } = useScroll({
+    target: textRef,
+    offset: ["start 80%", "end 40%"],
+  })
+  const reveal = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   const content = useMemo(() => {
     if (active === "mission") {
@@ -45,8 +52,22 @@ export function AboutTabs() {
     )
   }, [active])
 
+  const words = useMemo(() => {
+    const extractText = (node: React.ReactNode): string => {
+      if (typeof node === "string") return node
+      if (Array.isArray(node)) return node.map(extractText).join("")
+      if (node && typeof node === "object" && "props" in node) {
+        const props = (node as { props?: { children?: React.ReactNode } }).props
+        return extractText(props?.children ?? "")
+      }
+      return ""
+    }
+    const text = extractText(content).replace(/\s+/g, " ").trim()
+    return text.length ? text.split(" ") : []
+  }, [content])
+
   return (
-    <Section className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-20">
+    <Section id="nosotros" className="bg-white py-16 md:py-24 px-6 md:px-10 lg:px-20">
       <Reveal variant="slide-right" className="font-['Helvetica_Neue',Helvetica,Arial,sans-serif]">
         <div className="flex flex-wrap items-center gap-4">
           {tabs.map((tab) => {
@@ -69,8 +90,19 @@ export function AboutTabs() {
           })}
         </div>
 
-        <p className="mt-8 max-w-4xl text-2xl leading-tight text-[#1b1b1b] md:text-4xl">
-          {content}
+        <p
+          ref={textRef}
+          className="mt-8 max-w-4xl text-2xl leading-tight text-[#a8a8a8] md:text-4xl"
+        >
+          {words.map((word, index) => (
+            <Word
+              key={`${word}-${index}`}
+              word={word}
+              index={index}
+              total={words.length}
+              progress={reveal}
+            />
+          ))}
         </p>
 
         <div className="mt-12 flex items-center gap-3">
@@ -101,5 +133,30 @@ export function AboutTabs() {
         </div>
       </Reveal>
     </Section>
+  )
+}
+
+type WordProps = {
+  word: string
+  index: number
+  total: number
+  progress: MotionValue<number>
+}
+
+function Word({ word, index, total, progress }: WordProps) {
+  const start = index / total
+  const end = (index + 1) / total
+  const opacity = useTransform(progress, [start, end], [0.35, 1])
+  const color = useTransform(opacity, (value) => {
+    const t = Math.min(1, Math.max(0, value))
+    const gray = Math.round(168 + (27 - 168) * t)
+    return `rgb(${gray}, ${gray}, ${gray})`
+  })
+
+  return (
+    <motion.span style={{ color }}>
+      {word}
+      {index < total - 1 ? " " : ""}
+    </motion.span>
   )
 }

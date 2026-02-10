@@ -9,7 +9,7 @@ import { generateMetadata } from "@/lib/seo"
 
 export const metadata = generateMetadata({
   title: "Corocito Financial Services - Home",
-  description: "Conoce nuestros productos y servicios innovadores en MiStartup.",
+  description: "Conoce nuestros productos y servicios innovadores en Corocito Financial Services.",
 });
 
 export default function Home() {

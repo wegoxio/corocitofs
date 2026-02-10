@@ -9,9 +9,9 @@ export const siteConfig = {
     github: "https://github.com/mistartup",
   },
   navigation: [
-    { title: "Nosotros", href: "/" },
-    { title: "Servicios", href: "/#" },
-    { title: "Seguridad", href: "/#" },
-    { title: "Capacidad", href: "/#" },
+    { title: "Nosotros", href: "#nosotros" },
+    { title: "Servicios", href: "#servicios" },
+    { title: "Seguridad", href: "#seguridad" },
+    { title: "Capacidad", href: "#capacidad" },
   ],
 }

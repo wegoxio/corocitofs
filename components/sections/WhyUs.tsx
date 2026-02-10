@@ -18,7 +18,7 @@ const highlights = [
 
 export function WhyUs() {
   return (
-    <Section className="py-0">
+    <Section id="seguridad" className="py-0">
       <Reveal
         variant="slide-left"
         className="relative grid min-h-[420px] w-full grid-cols-1 overflow-hidden md:min-h-[520px] md:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"

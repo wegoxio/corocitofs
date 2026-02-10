@@ -83,7 +83,7 @@ const services: ServiceItem[] = [
 
 export function Services() {
   return (
-    <Section className="bg-white py-16 md:py-24">
+    <Section id="servicios" className="bg-white py-16 md:py-24">
       <Reveal variant="lift" className="font-['Helvetica_Neue',Helvetica,Arial,sans-serif]">
         <h2 className="text-3xl font-medium text-[#1b1b1b] md:text-4xl">
           Nuestros Servicios

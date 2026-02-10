@@ -2,11 +2,12 @@ import { cn } from "@/lib/utils"
 type SectionProps = {
   children: React.ReactNode
   className?: string
+  id?: string
 }
 
-export function Section({ children, className }: SectionProps) {
+export function Section({ children, className, id }: SectionProps) {
   return (
-    <section className={cn("mx-auto w-full max-w-[1760px]", className)}>
+    <section id={id} className={cn("mx-auto w-full max-w-[1760px]", className)}>
       {children}
     </section>
   )

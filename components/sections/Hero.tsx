@@ -4,7 +4,10 @@ import { Reveal } from "@/components/motion/Reveal"
 
 export function Hero() {
   return (
-    <Section className="relative w-full max-w-none overflow-hidden bg-[url('/hero-bg.webp')] bg-cover bg-center py-0">
+    <Section
+      id="inicio"
+      className="relative w-full max-w-none overflow-hidden bg-[url('/hero-bg.webp')] bg-cover bg-center py-0"
+    >
       <div className="pointer-events-none absolute inset-0 bg-white/65" />
       <div className="relative">
         <div className="mx-auto w-full max-w-[1760px] px-6">

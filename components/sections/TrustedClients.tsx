@@ -31,7 +31,7 @@ const testimonials = [
 
 export function TrustedClients() {
   return (
-    <Section className="bg-[#f7f5f2] py-16">
+    <Section id="capacidad" className="bg-[#f7f5f2] py-16">
       <Reveal
         variant="zoom"
         className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"

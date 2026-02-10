@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/Reveal"
 
 export function FinalCta() {
   return (
-    <Section className="py-0">
+    <Section className="py-0 mb-16 md:mb-20">
       <Reveal
         variant="blur"
         className="relative flex min-h-[420px] w-full items-center justify-center overflow-hidden bg-[url('/final.webp')] bg-cover bg-center md:min-h-[520px]"
