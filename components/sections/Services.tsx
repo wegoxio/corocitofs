@@ -16,10 +16,10 @@ type ServiceItem = {
 const services: ServiceItem[] = [
   {
     id: "payment",
-    label: "Payment Structuring",
-    title: "Payment\nStructuring",
+    label: "Estructuración de pagos",
+    title: "Estructuración\nde\npagos\n",
     description:
-      "Design and optimization of payment flows adapted to local and cross-border requirements.",
+      "Diseño de esquemas de pago seguros, ágiles y alineados al marco regulatorio.",
     defaultActive: true,
     badgeIconSrc: "/payment.svg",
     icon: (
@@ -33,10 +33,10 @@ const services: ServiceItem[] = [
   },
   {
     id: "intl",
-    label: "International Financial Services",
-    title: "International\nFinancial\nServices",
+    label: "Servicios Financieros Internacionales",
+    title: "Servicios\nFinancieros\nInternacionales",
     description:
-      "Cross-border advisory and structuring to enable global operations with local compliance.",
+      "Soluciones para operaciones y flujos financieros transfronterizos.",
     badgeIconSrc: "/globe.svg",
     icon: (
       <img
@@ -49,10 +49,10 @@ const services: ServiceItem[] = [
   },
   {
     id: "advisory",
-    label: "Financial Advisory",
-    title: "Financial\nAdvisory",
+    label: "Asesoría Financiera",
+    title: "Asesoría\nFinanciera",
     description:
-      "Strategic financial guidance for corporates and investors across LATAM.",
+      "Consultoría estratégica para decisiones financieras sólidas y estructuradas.",
     badgeIconSrc: "/financial.svg",
     icon: (
       <img
@@ -65,10 +65,10 @@ const services: ServiceItem[] = [
   },
   {
     id: "latam",
-    label: "Financial Solutions for LATAM",
-    title: "Financial\nSolutions for\nLATAM",
+    label: "Soluciones Financieras para Venezuela y LATAM",
+    title: "Soluciones\nFinancieras\npara\nVenezuela\ny\nLATAM",
     description:
-      "Regional solutions aligned with market dynamics and regulatory frameworks.",
+      "Estrategias adaptadas al entorno económico y regulatorio regional.",
     badgeIconSrc: "/continent.svg",
     icon: (
       <img
@@ -84,7 +84,11 @@ const services: ServiceItem[] = [
 export function Services() {
   return (
     <Section id="servicios" className="bg-white py-16 md:py-24">
-      <Reveal variant="lift" className="font-['Helvetica_Neue',Helvetica,Arial,sans-serif]">
+      <Reveal
+        variant="lift"
+        viewport={{ amount: 0.2, margin: "0px 0px -30% 0px" }}
+        className="font-['Helvetica_Neue',Helvetica,Arial,sans-serif]"
+      >
         <h2 className="text-3xl font-medium text-[#1b1b1b] md:text-4xl">
           Nuestros Servicios
         </h2>

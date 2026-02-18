@@ -19,22 +19,14 @@ export function Hero() {
             className="mx-auto max-w-2xl font-['Helvetica_Neue',Helvetica,Arial,sans-serif]"
           >
             <h1 className="text-3xl font-semibold leading-tight text-[#1b1b1b] sm:text-4xl md:text-5xl lg:text-6xl">
-              Fast. Secure. Financial
+              Soluciones financieras estratégicas
               <br />
-              solutions for LATAM.
+              para Latinoamérica.
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-sm font-normal text-[#3d3f44] md:text-base">
-              We provide reliable financial advisory and structuring services designed
-              to help businesses and investors operate confidently across Latin America.
+              Asesoramos a empresas e inversionistas en toda la región, estructurando operaciones financieras con rapidez, seguridad y estricto cumplimiento normativo. 
+              Combinamos estándares internacionales con profundo conocimiento del entorno latinoamericano para diseñar soluciones sólidas en planificación financiera, estructuración de inversiones y corporate finance.
             </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <button className="rounded-full bg-[#101F48] px-6 py-3 text-sm font-normal text-white transition-colors hover:bg-[#0b1a3d]">
-                Contact us via WhatsApp
-              </button>
-              <button className="rounded-full border border-[#cfd3d7] bg-white px-6 py-3 text-sm font-normal text-[#1b1b1b] transition-colors hover:border-[#9aa0a6] hover:text-[#101F48]">
-                Schedule a call
-              </button>
-            </div>
           </Reveal>
         </div>
       </div>

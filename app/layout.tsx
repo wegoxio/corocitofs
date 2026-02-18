@@ -1,17 +1,6 @@
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
 import "@/styles/global.css"
 import { siteConfig } from "@/lib/siteConfig"
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-})
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
 
 // Metadata global por default => Si una pagina especifica no tiene MetaData se utiliza este por defecto
 export const metadata: Metadata = {
@@ -53,21 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Preload fonts para mejorar LCP */}
-        <link
-          rel="preload"
-          href="/fonts/Inter-VariableFont.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

@@ -12,6 +12,6 @@ export const siteConfig = {
     { title: "Nosotros", href: "#nosotros" },
     { title: "Servicios", href: "#servicios" },
     { title: "Seguridad", href: "#seguridad" },
-    { title: "Capacidad", href: "#capacidad" },
+    { title: "Testimonios", href: "#testimonios" },
   ],
 }

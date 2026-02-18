@@ -1,12 +1,18 @@
-﻿"use client"
+"use client"
 
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useState, type MouseEvent } from "react"
 import { siteConfig } from "@/lib/siteConfig"
 import { Container } from "./Container"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    setIsOpen(false)
+    window.location.href = "/"
+  }
 
   useEffect(() => {
     if (!isOpen) return
@@ -21,14 +27,16 @@ export function Header() {
     <header className="w-full">
       <Container className="font-['Helvetica_Neue',Helvetica,Arial,sans-serif] px-4 md:px-10 lg:px-12">
         <div className="flex h-16 items-center justify-between md:hidden">
-          <Image
-            src="/mobile_logo.svg"
-            alt={`${siteConfig.name} Logo`}
-            width={120}
-            height={54}
-            priority
-            className="-ml-1 h-auto w-[110px]"
-          />
+          <a href="/" onClick={handleLogoClick} aria-label={`${siteConfig.name} home`}>
+            <Image
+              src="/mobile_logo.svg"
+              alt={`${siteConfig.name} Logo`}
+              width={120}
+              height={54}
+              priority
+              className="-ml-1 h-auto w-[110px]"
+            />
+          </a>
           <button
             type="button"
             aria-label="Open menu"
@@ -47,13 +55,15 @@ export function Header() {
         </div>
 
         <div className="hidden items-center gap-8 py-6 md:flex">
-          <Image
-            src={siteConfig.logo}
-            alt={`${siteConfig.name} Logo`}
-            width={240}
-            height={60}
-            priority
-          />
+          <a href="/" onClick={handleLogoClick} aria-label={`${siteConfig.name} home`}>
+            <Image
+              src={siteConfig.logo}
+              alt={`${siteConfig.name} Logo`}
+              width={240}
+              height={60}
+              priority
+            />
+          </a>
 
           <nav className="ml-auto flex items-center gap-10">
             {siteConfig.navigation.map((item) => (
@@ -68,10 +78,10 @@ export function Header() {
           </nav>
 
           <a
-            href="/contact"
+            href="#contacto"
             className="flex h-12 items-center justify-center rounded-full bg-[#101F48] px-7 text-sm font-normal text-white transition-colors hover:bg-[#0b1a3d]"
           >
-            Contact us
+            Contacto
           </a>
         </div>
       </Container>
@@ -96,13 +106,15 @@ export function Header() {
           ].join(" ")}
         >
           <div className="flex items-center justify-between">
-            <Image
-              src={siteConfig.logo}
-              alt={`${siteConfig.name} Logo`}
-              width={130}
-              height={32}
-              priority
-            />
+            <a href="/" onClick={handleLogoClick} aria-label={`${siteConfig.name} home`}>
+              <Image
+                src={siteConfig.logo}
+                alt={`${siteConfig.name} Logo`}
+                width={130}
+                height={32}
+                priority
+              />
+            </a>
             <button
               type="button"
               onClick={() => setIsOpen(false)}
@@ -126,7 +138,7 @@ export function Header() {
           </nav>
 
           <a
-            href="/contact"
+            href="#contacto"
             className="mt-10 flex h-11 items-center justify-center rounded-full bg-[#101F48] text-sm font-normal text-white transition-colors hover:bg-[#0b1a3d]"
             onClick={() => setIsOpen(false)}
           >

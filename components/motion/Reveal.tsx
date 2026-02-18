@@ -18,6 +18,10 @@ type RevealProps = {
   variant?: RevealVariant
   delay?: number
   once?: boolean
+  viewport?: {
+    amount?: number
+    margin?: string
+  }
 }
 
 type MotionVariant = { hidden: Variant; show: Variant }
@@ -69,6 +73,7 @@ export function Reveal({
   variant = "fade-up",
   delay = 0,
   once = true,
+  viewport,
 }: RevealProps) {
   return (
     <motion.div
@@ -77,7 +82,11 @@ export function Reveal({
       whileInView="show"
       variants={variants[variant]}
       transition={{ ...transitions[variant], delay }}
-      viewport={{ once, amount: 0.45, margin: "0px 0px -20% 0px" }}
+      viewport={{
+        once,
+        amount: viewport?.amount ?? 0.45,
+        margin: viewport?.margin ?? "0px 0px -20% 0px",
+      }}
     >
       {children}
     </motion.div>

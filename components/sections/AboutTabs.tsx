@@ -1,7 +1,14 @@
 "use client"
 
 import { useMemo, useRef, useState } from "react"
-import { motion, useScroll, useTransform, type MotionValue } from "framer-motion"
+import {
+  motion,
+  useInView,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "framer-motion"
 import { Section } from "@/components/layout/Section"
 import { Reveal } from "@/components/motion/Reveal"
 
@@ -16,38 +23,45 @@ const tabs: Array<{ key: TabKey; label: string }> = [
 export function AboutTabs() {
   const [active, setActive] = useState<TabKey>("about")
   const textRef = useRef<HTMLParagraphElement | null>(null)
+  const [isCompleted, setIsCompleted] = useState(false)
+  const isInView = useInView(textRef, { amount: 0.6, margin: "0px 0px -10% 0px" })
+  const isInViewRef = useRef(isInView)
+  isInViewRef.current = isInView
   const { scrollYProgress } = useScroll({
     target: textRef,
     offset: ["start 80%", "end 40%"],
   })
-  const reveal = useTransform(scrollYProgress, [0, 1], [0, 1])
+  const revealProgress = useTransform(scrollYProgress, [0, 1], [0, 1])
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    if (isInViewRef.current && value >= 0.95) {
+      setIsCompleted(true)
+    }
+  })
+  const reveal = useTransform(revealProgress, (value) => (isCompleted ? 1 : value))
 
   const content = useMemo(() => {
     if (active === "mission") {
       return (
         <>
-          Corocito Financial Services S.A. impulsa decisiones financieras
-          sólidas mediante asesoría estratégica, estructuración a medida y
-          acompañamiento continuo para empresas e inversionistas en la región.
+          Brindar asesoría y soluciones financieras estratégicas en Latinoamérica, 
+          estructurando operaciones con rapidez, seguridad y estricto cumplimiento normativo, para apoyar 
+          a empresas e inversionistas en la toma de decisiones sólidas y sostenibles en entornos económicos dinámicos.
         </>
       )
     }
     if (active === "vision") {
       return (
         <>
-          Ser la firma de referencia en Latinoamérica por la calidad, precisión
-          y confianza de nuestro asesoramiento financiero y estructuración de
-          proyectos.
+          Consolidarnos como una firma de referencia en asesoría financiera en Latinoamérica, 
+          reconocida por su rigor técnico, confiabilidad, excelencia en cumplimiento regulatorio y 
+          capacidad de estructurar soluciones eficientes en mercados complejos.
         </>
       )
     }
     return (
       <>
-        Corocito Financial Services S.A. is a financial advisory firm
-        incorporated in <span className="text-[#8f8f8f]">Panama</span>,
-        strategically positioned to support clients operating in{" "}
-        <span className="text-[#8f8f8f]">Venezuela</span> and across Latin
-        America.
+        Corocito Financial Services (CFS) es una firma de asesoría financiera incorporada en Panamá que acompaña a empresas e inversionistas en Latinoamérica, 
+        estructurando soluciones estratégicas con rapidez, seguridad y estricto cumplimiento normativo; combinamos estándares internacionales con profundo conocimiento del entorno regional para ofrecer asesoría confiable en contextos económicos y regulatorios complejos.
       </>
     )
   }, [active])
@@ -106,30 +120,12 @@ export function AboutTabs() {
         </p>
 
         <div className="mt-12 flex items-center gap-3">
-          <button
-            type="button"
-            className="h-12 rounded-full bg-[#1b1b1b] px-6 text-sm font-normal text-white"
+          <a
+            href="#contacto"
+            className="flex h-12 items-center rounded-full bg-[#1b1b1b] px-6 text-sm font-normal text-white"
           >
             Contacto
-          </button>
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1b1b1b]">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                d="M7 17L17 7M9.5 7H17V14.5"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
+          </a>
         </div>
       </Reveal>
     </Section>
@@ -160,3 +156,4 @@ function Word({ word, index, total, progress }: WordProps) {
     </motion.span>
   )
 }
+

@@ -31,27 +31,26 @@ const testimonials = [
 
 export function TrustedClients() {
   return (
-    <Section id="capacidad" className="bg-[#f7f5f2] py-16">
+    <Section id="testimonios" className="bg-[#f7f5f2] py-16">
       <Reveal
         variant="zoom"
         className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]"
       >
         <div className="px-6 lg:px-12">
           <h2 className="max-w-md font-['Helvetica_Neue',Helvetica,Arial,sans-serif] text-3xl font-semibold leading-tight text-[#1b1b1b] sm:text-4xl lg:text-5xl">
-            Trusted by
+            Respaldados por
             <br />
-            clients who
+            Clientes que
             <br />
-            value speed,
+            Valoran rapidez,
             <br />
-            security, and
+            segurida y
             <br />
-            clarity.
+            calridad.
           </h2>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-[#2c2c2c]">
-            We work closely with businesses and investors who operate in complex
-            environments and need financial decisions executed with precision and
-            confidence.
+            Trabajamos estrechamente con empresas e inversionistas que operan en entornos complejos y requieren decisiones 
+            financieras estructuradas con precisión, cumplimiento normativo y absoluta confianza.
           </p>
         </div>
         <div className="flex min-h-[360px] w-full items-stretch gap-4 overflow-x-auto pb-2 px-6 sm:min-h-[420px] lg:min-h-[520px] lg:justify-end lg:gap-0 lg:overflow-visible lg:px-12">
@@ -74,7 +73,7 @@ export function TrustedClients() {
                   className="h-5 w-auto"
                 />
               </div>
-              <div className="absolute bottom-5 left-5 right-5 text-white opacity-100 transition-all duration-500 lg:opacity-0 lg:group-hover:opacity-100">
+              <div className="absolute bottom-5 left-5 right-5 text-white opacity-100 transition-opacity duration-300 delay-0 lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:delay-500">
                 <p className="text-lg font-semibold">{item.name}</p>
                 <div className="mt-2 h-px w-12 bg-white/70" />
                 <p className="mt-2 text-xs leading-relaxed text-white/90">

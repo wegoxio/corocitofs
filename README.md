@@ -144,3 +144,33 @@ public/logo.png
 - Todos los componentes y secciones reutilizables  
 - Perfecto para prototipos rápidos o despliegues iniciales
 
+
+
+---
+
+## 🚀 Deploy estático en Hostinger (sin SSR)
+
+Este proyecto está configurado para **export estático** con Next.js (`output: "export"`), ideal para Hostinger compartido sin Node runtime.
+
+### 1) Construir en local
+
+```bash
+pnpm install
+pnpm build
+```
+
+### 2) Carpeta que debes subir
+
+Después del build, Next genera la carpeta:
+
+```bash
+out/
+```
+
+Sube **todo el contenido de `out/`** a `public_html/` en Hostinger.
+
+### 3) Consideraciones importantes
+
+- No necesitas marcar todas las páginas con `"use client"`. Solo componentes con hooks/eventos del navegador deben usarlo.
+- `next/image` funciona en export estático aquí porque está configurado con `images.unoptimized: true`.
+- Con `trailingSlash: true`, las rutas exportadas son más amigables para hosting estático.
