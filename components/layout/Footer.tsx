@@ -16,35 +16,11 @@ export function Footer() {
           <div className="flex flex-col items-start gap-3">
             <img src={siteConfig.logo} alt={siteConfig.name} className="h-8 w-auto brightness-0 invert" />
             <p className="max-w-md text-xs text-white/75">
-              Reliable financial advisory and structuring services across Latin America.
+              Asesoría y estructuración financiera confiable en Latinoamérica.
             </p>
             <p className="text-xs text-white/60">
               {siteConfig.name} &copy; {new Date().getFullYear()}
             </p>
-          </div>
-
-          <div className="flex flex-col gap-3 md:items-end">
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/80">
-              Follow us
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {Object.entries(siteConfig.socialLinks).map(([key, url]) => {
-                const Icon = socialIcons[key as keyof typeof socialIcons]
-                if (!Icon) return null
-                return (
-                  <a
-                    key={key}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={key}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-white/85 transition-colors hover:border-white hover:text-white"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                )
-              })}
-            </div>
           </div>
         </div>
       </Container>
