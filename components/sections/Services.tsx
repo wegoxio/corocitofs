@@ -83,7 +83,7 @@ const services: ServiceItem[] = [
 
 export function Services() {
   return (
-    <Section id="servicios" className="bg-white py-16 md:py-24">
+    <Section id="servicios" className="bg-white px-6 py-16 md:px-10 md:py-24 lg:px-20">
       <Reveal
         variant="lift"
         viewport={{ amount: 0.2, margin: "0px 0px -30% 0px" }}
